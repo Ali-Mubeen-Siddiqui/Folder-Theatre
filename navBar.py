@@ -26,4 +26,4 @@ class Navbar(Menu):
         self.add_cascade(label="Themes", menu=themes_menu)
         themes_menu.add_command(label="Light",command= lambda : changetheme("light",root))
         themes_menu.add_command(label="Dark",command= lambda : changetheme("dark",root))
-        # themes_menu.add_command(label="System",command= lambda : changetheme("system",root))
+        themes_menu.add_command(label="System",command= lambda : changetheme("system",root))
