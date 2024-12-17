@@ -1,7 +1,7 @@
 from customtkinter import *
 from tkinter import *
 import json
-
+from statusBar import *
 from navBar import *
 
 
@@ -11,8 +11,8 @@ class App(CTk):
         self.geometry("644x433")
         self.minsize(444, 233)
         self.title("Folder Theatre")
-        nav = Navbar(self)
-        self.config(menu=nav)
+        self.loadComponents()
+        
         self.loadTheme()
 
     def setTheme(self,theme):
@@ -27,7 +27,21 @@ class App(CTk):
             self.setTheme(theme)
         except Exception as e:
             self.setTheme("dark")
+
+    def nav(self,sb):
+        nav = Navbar(self,sb)
+        self.config(menu=nav)
+
+
+    def loadComponents(self):
+        sb = self.statusbar()
+        self.nav(sb)
             
+    def statusbar(self):
+        sb = StatusBar(self)
+        
+        sb.pack(fill=X, side=BOTTOM)
+        return sb
 
 
 

@@ -1,4 +1,5 @@
 import json
+from alertBox import Alert
 
 def changetheme(theme,root):
     try:
@@ -16,6 +17,8 @@ def changetheme(theme,root):
         with open("settings.json", "w") as file:
             json.dump(settings, file)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        alrt = Alert(root,"unable to apply the theme")
+        alrt.show()
+       
     
     root.loadTheme()
