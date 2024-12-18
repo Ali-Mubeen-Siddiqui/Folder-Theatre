@@ -4,10 +4,10 @@ class view(CTkTabview):
     def __init__(self,root,statusKey):
         self.root = root
         self.statusKey = statusKey
-        super().__init__(master=root,fg_color="#D3D3D3",height=135,segmented_button_selected_color="grey10")  # A dark grey like shade of selected
+        super().__init__(master=root,fg_color="#D3D3D3",height=134,segmented_button_selected_color="grey10",border_width=0)  # A dark grey like shade of selected
 
         self.loadView()
-        self.pack(fill=X,expand=True,anchor=NW,pady=0)
+        self.pack(fill=BOTH,expand=True,anchor=NW,pady=0,padx=0)
         
 
     def loadView(self):
@@ -29,7 +29,7 @@ class view(CTkTabview):
 
     def loadNotage(self):
         self.add("Notes")
-        
+
     def loadSearch(self):
         self.add("Search")
 

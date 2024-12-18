@@ -2,7 +2,7 @@ import json
 from . import alertBox
 
 
-def changetheme(theme,root):
+def changetheme(theme,root,erKey):
     try:
         with open("components/settings.json", "r") as file:
             settings = json.load(file)
@@ -23,3 +23,4 @@ def changetheme(theme,root):
        
     
     root.loadTheme()
+    erKey.loadThemeArea()

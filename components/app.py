@@ -4,6 +4,7 @@ import json
 from . import statusBar
 from . import navBar
 from . import views
+from . import area
 
 
 class App(CTk):
@@ -12,13 +13,14 @@ class App(CTk):
         self.geometry("644x433")
         self.minsize(444, 233)
         self.title("Folder Theatre")
+        self.loadTheme()
         self.loadComponents()
         
-        self.loadTheme()
 
     def setTheme(self,theme):
+        self.theme = theme
         # applies theme
-        self._set_appearance_mode(theme)
+        self._set_appearance_mode(self.theme)
 
     def loadTheme(self):
         try:
@@ -29,15 +31,16 @@ class App(CTk):
         except Exception as e:
             self.setTheme("dark")
 
-    def nav(self,sb):
-        nav = navBar.Navbar(self,sb)
+    def nav(self,sb,erKey):
+        nav = navBar.Navbar(self,sb,erKey)
         self.config(menu=nav)
 
 
     def loadComponents(self):
         sb = self.statusbar()
-        self.nav(sb)
         self.loadviews(sb)
+        la = self.loadarea(sb)
+        self.nav(sb,la)
             
     def statusbar(self):
         sb = statusBar.StatusBar(self)
@@ -47,6 +50,10 @@ class App(CTk):
     
     def loadviews(self,sb):
         myview = views.view(self,sb)
+
+    def loadarea(self,sb):
+        fArea = area.Area(self,self.theme,sb)
+        return fArea
         
 
 
