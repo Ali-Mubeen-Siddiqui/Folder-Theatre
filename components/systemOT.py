@@ -3,6 +3,7 @@ from . import alertBox
 
 
 def changetheme(theme,root,erKey):
+    
     try:
         with open("components/settings.json", "r") as file:
             settings = json.load(file)
