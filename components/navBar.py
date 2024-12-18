@@ -21,7 +21,7 @@ class Navbar(Menu):
         folder_menu = Menu(self, tearoff=0)
         self.add_cascade(label="Folder", menu=folder_menu)
         folder_menu.add_command(label="Open", accelerator="Ctrl+O", command = lambda : openClose.open_folder(root,statusKey))
-        folder_menu.add_command(label="Close", accelerator="Ctrl+C")
+        folder_menu.add_command(label="Close", accelerator="Ctrl+C",command = lambda : openClose.close_folder(root,statusKey))
         
 
     def themesWidget(self,root):
