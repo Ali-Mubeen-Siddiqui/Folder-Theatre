@@ -8,20 +8,21 @@ from . import alertBox
 class Navbar(Menu):
     def __init__(self,root,statusKey):
         super().__init__()
-        self.loadWidget(root,statusKey)
+        self.statusKey = statusKey
+        self.loadWidget(root)
         
         
 
-    def loadWidget(self,root,statusKey):
-        self.folderWidget(root,statusKey)
+    def loadWidget(self,root):
+        self.folderWidget(root)
         self.themesWidget(root)
         self.loadVersion(root)
         
-    def folderWidget(self,root,statusKey):
+    def folderWidget(self,root):
         folder_menu = Menu(self, tearoff=0)
         self.add_cascade(label="Folder", menu=folder_menu)
-        folder_menu.add_command(label="Open", accelerator="Ctrl+O", command = lambda : openClose.open_folder(root,statusKey))
-        folder_menu.add_command(label="Close", accelerator="Ctrl+C",command = lambda : openClose.close_folder(root,statusKey))
+        folder_menu.add_command(label="Open", accelerator="Ctrl+O", command = lambda : openClose.open_folder(root,self.statusKey))
+        folder_menu.add_command(label="Close", accelerator="Ctrl+C",command = lambda : openClose.close_folder(root,self.statusKey))
         
 
     def themesWidget(self,root):

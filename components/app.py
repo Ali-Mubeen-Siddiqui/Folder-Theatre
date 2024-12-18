@@ -3,6 +3,7 @@ from tkinter import *
 import json
 from . import statusBar
 from . import navBar
+from . import views
 
 
 class App(CTk):
@@ -36,12 +37,18 @@ class App(CTk):
     def loadComponents(self):
         sb = self.statusbar()
         self.nav(sb)
+        self.loadviews(sb)
             
     def statusbar(self):
         sb = statusBar.StatusBar(self)
         
         sb.pack(fill=X, side=BOTTOM)
         return sb
+    
+    def loadviews(self,sb):
+        myview = views.view(self,sb)
+        
+
 
 
 
