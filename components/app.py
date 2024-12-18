@@ -1,8 +1,8 @@
 from customtkinter import *
 from tkinter import *
 import json
-from statusBar import *
-from navBar import *
+from . import statusBar
+from . import navBar
 
 
 class App(CTk):
@@ -21,7 +21,7 @@ class App(CTk):
 
     def loadTheme(self):
         try:
-            with open("settings.json", "r") as file:
+            with open("components/settings.json", "r") as file:
                 setting = json.load(file)
             theme = setting["themes"]["current"]
             self.setTheme(theme)
@@ -29,7 +29,7 @@ class App(CTk):
             self.setTheme("dark")
 
     def nav(self,sb):
-        nav = Navbar(self,sb)
+        nav = navBar.Navbar(self,sb)
         self.config(menu=nav)
 
 
@@ -38,7 +38,7 @@ class App(CTk):
         self.nav(sb)
             
     def statusbar(self):
-        sb = StatusBar(self)
+        sb = statusBar.StatusBar(self)
         
         sb.pack(fill=X, side=BOTTOM)
         return sb

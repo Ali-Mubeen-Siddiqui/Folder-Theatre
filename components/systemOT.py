@@ -1,9 +1,10 @@
 import json
-from alertBox import Alert
+from . import alertBox
+
 
 def changetheme(theme,root):
     try:
-        with open("settings.json", "r") as file:
+        with open("components/settings.json", "r") as file:
             settings = json.load(file)
         if theme == "system":
             # handle system theme mode, e.g., get the system theme and set it
@@ -14,10 +15,10 @@ def changetheme(theme,root):
                 theme = "dark"
             
         settings["themes"]["current"] = theme
-        with open("settings.json", "w") as file:
+        with open("components/settings.json", "w") as file:
             json.dump(settings, file)
     except Exception as e:
-        alrt = Alert(root,"unable to apply the theme")
+        alrt = alertBox.Alert(root,"unable to apply the theme","error")
         alrt.show()
        
     

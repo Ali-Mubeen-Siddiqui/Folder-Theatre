@@ -1,4 +1,4 @@
-from app import App
+from components.app import App
 
 
 def main():
@@ -8,4 +8,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
